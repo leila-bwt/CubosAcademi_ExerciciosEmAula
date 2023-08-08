@@ -1,0 +1,21 @@
+{
+  "name": "rotas-controladores",
+  "version": "0.0.1",
+  "description": "Aula sobre rotas, intermediários e controladores",
+  "main": "index.js",
+  "scripts": {
+"dev": "nodemon ./src/index.js"  },
+  "keywords": [
+    "backend",
+    "node.js",
+    "javascript"
+  ],
+  "author": "Leila Borges",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
