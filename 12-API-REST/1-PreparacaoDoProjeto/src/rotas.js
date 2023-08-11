@@ -15,4 +15,8 @@ rotas.get('/instrutores/:id', instrutores.obterInstrutor);
 rotas.post('/instrutores', instrutores.cadastrarInstrutor);
 //rota para pegar o controlador Instrutores com a função cadastrarInstrutor
 
+rotas.push('./instrutores/:id', instrutores.atualizarInstrutor);
+// rota para fazer atualização das informações do instrutor exceto id
+// atraves do instrutores-id vai levar para controlador de instrutores
+// na função atualizarInstrutor
 module.exports = rotas;

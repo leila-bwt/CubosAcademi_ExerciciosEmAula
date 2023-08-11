@@ -37,15 +37,20 @@ const cadastrarInstrutor = (req, res)=>{
         status: status ?? true
     }
 
-    instrutores.push();
+    instrutores.push(instrutor);
 
     return res.status(201).json(instrutor);
 
 
 }
 
+const atualizarInstrutor = (req, res) => {
+
+}
+
 module.exports = {
     listarInstrutores,
     obterInstrutor,
-    cadastrarInstrutor
+    cadastrarInstrutor,
+    atualizarInstrutor
 }
