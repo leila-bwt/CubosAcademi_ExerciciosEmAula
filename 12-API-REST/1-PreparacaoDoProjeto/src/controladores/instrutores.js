@@ -67,12 +67,51 @@ const atualizarInstrutor = (req, res) => {
     instrutor.email = email;
     instrutor.status = status;
 
+    return res.status(203).send();
+}
+
+const atualizarStatusInstrutor = (req, res) => {
+    const{id} = req.params;
+    const{status} = req.body
+;    const instrutor = instrutores.find((instrutor) => {
+        return instrutor.id === Number(id);
+    });
+
+    if (!instrutor) {
+        return res.status(404).json({ mensagem: 'Instrutor não encontrado.' });
+    }
+
+    instrutor.status = status;
+
     return res.status(204).send();
+}
+
+const excluirInstrutor = (req, res) => {
+    const {id} = req.params;
+
+    const instrutor = instrutores.find((instrutor) => {
+        return instrutor.id === Number(id);
+    });
+
+    if(!instrutor) {
+        return res.status(404).json({mensagem: 'O instrutor não existe'});
+    }
+
+    instrutores = instrutores.filter((instrutor) => {
+        return instrutor.id !== Number(id);
+    });
+    // filter pegar todos os instrutores exceto oq queremos excluir
+    // e subreescreve o array de instrutores com os nomes que ficaram
+
+    return res.status(204).send();
+
 }
 
 module.exports = {
     listarInstrutores,
     obterInstrutor,
     cadastrarInstrutor,
-    atualizarInstrutor
+    atualizarInstrutor,
+    atualizarStatusInstrutor,
+    excluirInstrutor
 }

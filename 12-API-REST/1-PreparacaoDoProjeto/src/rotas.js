@@ -15,9 +15,16 @@ rotas.get('/instrutores/:id', instrutores.obterInstrutor);
 rotas.post('/instrutores', instrutores.cadastrarInstrutor);
 //rota para pegar o controlador Instrutores com a função cadastrarInstrutor
 
-rotas.put('./instrutores/:id', instrutores.atualizarInstrutor);
+rotas.put('/instrutores/:id', instrutores.atualizarInstrutor);
 // rota para fazer atualização das informações do instrutor exceto id
 // atraves do instrutores-id vai levar para controlador de instrutores
 // na função atualizarInstrutor
 
+rotas.patch('/instrutores/:id/status', instrutores.atualizarStatusInstrutor);
+// vai alterar apennas uma parte do recurso,
+// o path está fazendo a atualização do instrutor,
+// buscando pelo id e alterando o status
+
+rotas.delete('/instrutores/:id', instrutores.excluirInstrutor);
+// vai pegar controlador dentro de instrutor e excluir instrutor
 module.exports = rotas;
