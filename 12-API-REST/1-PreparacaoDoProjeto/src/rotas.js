@@ -1,5 +1,7 @@
 const express = require('express');
 const instrutores = require('./controladores/instrutores');
+const aulas = require('./controladores/aulas');
+
 
 const rotas = express();
 
@@ -28,3 +30,6 @@ rotas.patch('/instrutores/:id/status', instrutores.atualizarStatusInstrutor);
 rotas.delete('/instrutores/:id', instrutores.excluirInstrutor);
 // vai pegar controlador dentro de instrutor e excluir instrutor
 module.exports = rotas;
+
+rotas.post('/instrutores/:idInstrutor/aulas', aulas.cadastrarAula);
+//recebe o id do instrutor
