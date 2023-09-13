@@ -1,29 +1,18 @@
 const express = require('express');
 const pool = require('./conexao');
 
-const app = express();
+  const app = express();
 
-app.use(express.json());
+  app.use(express.json());
 
-app.get('/', async (req, res) => {
-  const client = new Client({
-    host: 'localhost',
-    port: 5432,
-    user:'postgres',
-    password:'1234',
-    database:'aula_conexao_node_pg'
-  });
+  app.get('/', async (req, res) => {
   try {
-    await client.connect();
-
-    const resultado = await client.query('SELECT * from empresas');
-    await client.end();
-
+    const resultado = await pool.query('SELECT * from empresas');
     return res.json(resultado);
-  }catch(error){
+  } catch (error) {
     console.log(error.message);
   }
-  
+
 });
 
 app.listen(3000);
