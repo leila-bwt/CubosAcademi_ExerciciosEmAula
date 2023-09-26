@@ -15,9 +15,21 @@ app.get('/', async (req, res) => {
     //const agenda = await knex('agenda').where({id:5}).first().debug();
     //first() retorna apenas o primeiro registro
 
-    const agenda = await knex('agenda').where({id:5}).select('id', 'nome').first().debug();
+    //const agenda = await knex('agenda').where({id:5}).select('id', 'nome').first().debug();
 
-    
+    //select * from agenda where email is null
+    //const agenda = await knex('agenda').whereNull('email').debug();
+
+    //select * from agenda where email is not null
+    //const agenda = await knex('agenda').whereNotNull('email').debug();
+
+    //select * from agenda where id between 5 and 10
+    //const agenda = await knex('agenda').whereBetween('id', [5, 10]).debug();
+
+    //const agenda = await knex('agenda').whereBetween('id', [5, 10]).orderBy('id', 'desc').debug();
+
+    const agenda = await knex('agenda').distinct('email', 'nome').debug();
+
     return res.json(agenda);
 });
 
