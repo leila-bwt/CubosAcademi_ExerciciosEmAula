@@ -34,8 +34,17 @@ app.get('/', async (req, res) => {
     //const agenda = await knex('agenda').select('email').groupBy('email').count().debug();
     // agrupar por email e contar quantos registros tem por email
 
-    const agenda = await knex('agenda').limit(5).offset(2).debug();
+    //const agenda = await knex('agenda').limit(5).offset(2).debug();
+
+    //const agenda = await knex('agenda').whereNull('email').count().debug();
     
+    //const agenda = await knex('agenda').whereNull('email').sum('id').debug();
+
+    //const agenda = await knex('agenda').whereNull('email').avg('id').debug();
+
+    //const agenda = await knex('agenda').whereNull('email').min('id').debug();
+
+    const agenda = await knex('agenda').whereNull('email').max('id').debug();
     return res.json(agenda);
 });
 
