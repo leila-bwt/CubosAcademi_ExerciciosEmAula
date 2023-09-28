@@ -24,4 +24,12 @@ app.get('/', async (req, res) => {
    
 });
 
+app.put('/:id', async (req, res) => {
+   const{nome, email, telefone} = req.body;
+   const{id} = req.params;
+
+   const agendaAtualizada = await knex('agenda').update({nome, email, telefone}).where({id});
+   return res.json(agendaAtualizada);
+});
+
 app.listen(3000);
