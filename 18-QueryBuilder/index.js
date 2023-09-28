@@ -32,4 +32,11 @@ app.put('/:id', async (req, res) => {
    return res.json(agendaAtualizada);
 });
 
+app.delete('/:id', async (req, res) => {
+   const{id} = req.params;
+
+   const agendaDeletada = await knex('agenda').del().where({id}).returning('id');
+   return res.json(agendaDeletada);
+});
+
 app.listen(3000);
