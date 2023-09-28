@@ -1,7 +1,14 @@
+const pool = require('../conexao');
+
 const venda = async (req, res) => {
     const {cliente_id, produto_id, quantidade} = req.body
 
     try {
+        //>>teste para implementação do stripe<<
+        //const {data: saldo} = await instanciaAxios.get('/balance');
+        //trás somente o saldo disponível
+        //return res.status(200).json(saldo);
+
         const cliente = await pool.query('SELECT * FROM clientes WHERE id = $1', [cliente_id]);
     
         if (cliente.rowCount < 1) {
